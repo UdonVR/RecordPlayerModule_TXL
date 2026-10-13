@@ -1,0 +1,12 @@
+{
+  "name": "com.udonvr.recordplayer.txl",
+  "displayName": "UdonVR - RecordPlayer - TXL Module",
+  "version": "1.0.0",
+  "unity": "2022.3",
+  "description": "TXL hook for UdonVR's Record Player.",
+  "author": {
+    "name": "UdonVR",
+    "email": "admin@udonvr.com",
+    "url": "https://udonvr.com"
+  }
+}
