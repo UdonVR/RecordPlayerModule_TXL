@@ -6,7 +6,7 @@ Compatibility hook bridging the **UdonVR Record Player** (`RecordPlayer_Videopla
 
 | Capability | Status | Implementation Details |
 | :--- | :---: | :--- |
-| **Editor Auto-Setup** | `None` | Requires manual inspector assignment |
+| **Editor Auto-Setup** | `Full` | Supported via `RecordPlayerAutoSetup` editor script |
 | **Load URL** | `Full` | Calls `txl._ChangeUrl(_url)` |
 | **External Load Detection** | `Full` | `playerState == 1` triggers `_OnVideoLoad()` to stop vinyl if TXL is used externally |
 | **Play / Pause / Stop** | `Full` | Uses `txl._TriggerPause()` and `txl._TriggerStop()` |
@@ -34,7 +34,7 @@ Compatibility hook bridging the **UdonVR Record Player** (`RecordPlayer_Videopla
   "scriptPath": "RecordPlayer_VideoPlayer_TXL.cs",
   "className": "RecordPlayer_VideoPlayer_TXL",
   "baseClass": "UdonVR.RecordPlayer.RecordPlayer_VideoplayerClass",
-  "autoSetup": false,
+  "autoSetup": true,
   "requiredNamespaces": [
     "Texel"
   ],
@@ -59,7 +59,7 @@ Compatibility hook bridging the **UdonVR Record Player** (`RecordPlayer_Videopla
     }
   ],
   "capabilities": {
-    "autoSetup": "none",
+    "autoSetup": "full",
     "loadUrl": "full",
     "externalLoadDetection": "full",
     "playPauseStop": "full",
@@ -72,7 +72,6 @@ Compatibility hook bridging the **UdonVR Record Player** (`RecordPlayer_Videopla
     "customTitleMetadata": "none"
   },
   "notes": [
-    "No auto-setup support; requires manual inspector references.",
     "Class is in the global namespace rather than UdonVR.RecordPlayer.",
     "State 0 (Stopped) calls _End() for both manual stops and natural track completion, preventing _PlaybackEnded() from advancing tracks or shuffling unless State 3 (Error) occurs.",
     "_loopCurrentUrl() and _SetTitle() are empty."
