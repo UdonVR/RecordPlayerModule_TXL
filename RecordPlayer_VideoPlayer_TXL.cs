@@ -3,6 +3,7 @@ using System;
 using Texel;
 using UdonSharp;
 using UdonVR.RecordPlayer;
+using UnityEditor;
 using UnityEngine;
 using VRC.SDKBase;
 using VRC.Udon;
@@ -145,6 +146,15 @@ public class RecordPlayer_VideoPlayer_TXL : RecordPlayer_VideoplayerClass
     {
         txl._SetTargetTime(_time);
     }
+
+    #endregion
+    
+    #region Polling settings
+    public override bool _UsePreEndDetection() { return true; } 
+    public override float _GetPlaybackLoopInterval() { return 1f; } // Default 1s polling
+    public override float _GetEndTimeTolerance() { return 10.0f; } // How close to EndTime triggers _PlaybackEnded
+    public override float _GetChapterLoopMinusGuard() { return 1.0f; } // - guard for _ScanChapter
+    public override float _GetChapterLoopPlusGuard() { return 1.0f; }  // + guard for _ScanChapter
 
     #endregion
 
